@@ -1,17 +1,17 @@
 <template>
   <div class="main">
-    <Items v-if="active == 0" />
-    <Favourite v-if="active == 1" />
-    <Cart v-if="active == 2" />
-    <Personal v-if="active == 3" />
-
-    <tabbar v-model="active">
-      <tabbar-item icon="wap-home">Items</tabbar-item>
-      <tabbar-item icon="like">Favourite</tabbar-item>
-      <tabbar-item icon="shopping-cart">Cart</tabbar-item>
-      <tabbar-item icon="manager">Personal</tabbar-item>
-    </tabbar>
+    <Items v-show="active == 0" />
+    <Favourite v-show="active == 1" />
+    <Cart v-show="active == 2" />
+    <Personal v-show="active == 3" />
   </div>
+
+  <tabbar v-model="active">
+    <tabbar-item icon="wap-home">Items</tabbar-item>
+    <tabbar-item icon="like">Favourite</tabbar-item>
+    <tabbar-item icon="shopping-cart">Cart</tabbar-item>
+    <tabbar-item icon="manager">Personal</tabbar-item>
+  </tabbar>
 </template>
 <script setup>
 import { Tabbar, TabbarItem } from "vant";

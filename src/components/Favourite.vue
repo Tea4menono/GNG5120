@@ -4,7 +4,7 @@ import { Button } from "vant";
 
 <template>
   <div class="main">
-    <Button type="primary">主要按钮3</Button>
+    <div>Favourite</div>
   </div>
 </template>
 
