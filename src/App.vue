@@ -12,14 +12,14 @@
   </div>
 
   <tabbar v-model="active">
-    <tabbar-item icon="wap-home">Items</tabbar-item>
+    <tabbar-item icon="wap-home" badge="5">Items</tabbar-item>
     <tabbar-item icon="like">Favourite</tabbar-item>
     <tabbar-item icon="shopping-cart">Cart</tabbar-item>
-    <tabbar-item icon="manager">Personal</tabbar-item>
+    <tabbar-item icon="manager" dot>Personal</tabbar-item>
   </tabbar>
 </template>
 <script setup>
-import { Tabbar, TabbarItem, Toast } from "vant";
+import { Tabbar, TabbarItem, Toast, Badge } from "vant";
 import Items from "./components/Items.vue";
 import Cart from "./components/Cart.vue";
 import Favourites from "./components/Favourites.vue";
