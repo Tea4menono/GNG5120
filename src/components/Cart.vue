@@ -1,22 +1,22 @@
 <script setup>
 import { Card, Button, SubmitBar } from "vant";
-const props = defineProps({
-  showList: Array,
-});
-
-const emit = defineEmits(["remove"]);
-
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+const store = useStore();
+const router = useRouter();
 const remove = (id) => {
-  emit("remove", id);
+  store.commit("removeFromCart", id);
 };
 
-const onSubmit = () => {};
+const onSubmit = () => {
+  router.push({ path: "/checkout" });
+};
 </script>
 
 <template>
   <div class="main">
     <Card
-      v-for="x in showList.filter((e) => e.inCart)"
+      v-for="x in store.state.showList.filter((e) => e.inCart)"
       num="2"
       :price="x.price"
       :desc="x.dp"

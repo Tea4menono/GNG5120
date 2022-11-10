@@ -1,17 +1,22 @@
 <script setup>
 import { Card, Icon } from "vant";
-const props = defineProps({
-  showList: Array,
-});
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+const store = useStore();
+const router = useRouter();
+const viewDetail = function (id) {
+  router.push({ path: "/detail", query: { id: id } });
+};
 </script>
 
 <template>
   <div class="main">
     <Card
-      v-for="x in showList.filter((e) => e.favourite)"
+      v-for="x in store.state.showList.filter((e) => e.favourite)"
       :desc="x.dp"
       :title="x.name"
       :thumb="x.img"
+      @click="viewDetail(x.id)"
     >
       <template #tags>
         <Icon color="red" name="like" size="20" />

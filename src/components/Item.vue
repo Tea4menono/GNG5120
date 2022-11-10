@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="item" @click="viewDetail">
     <img :src="info.img" />
     <div>{{ info.name }}</div>
     <div>{{ info.dp }}</div>
@@ -17,12 +17,16 @@
   </div>
 </template>
 <script setup>
+import { useRouter } from "vue-router";
 import { Icon, Toast } from "vant";
 import moment from "moment";
+import { useStore } from "vuex";
+const store = useStore();
+
 const props = defineProps({
   info: Object,
 });
-const emit = defineEmits(["reverseFavourite"]);
+const router = useRouter();
 
 const timeConvert = function (timeStamp) {
   return moment(timeStamp).format("YYYY-MM-DD hh:mm:ss");
@@ -33,7 +37,11 @@ const setFavourite = function () {
   } else {
     Toast.success("Successfully Added!");
   }
-  emit("reverseFavourite", props.info.id);
+  store.commit("reverseFavourite", props.info.id);
+};
+
+const viewDetail = function () {
+  router.push({ path: "/detail", query: { id: props.info.id } });
 };
 </script>
 <style scoped lang="less">

@@ -2,18 +2,12 @@
 import item from "./Item.vue";
 import { ref } from "vue";
 import { Search, Sticky, PullRefresh } from "vant";
+import { useStore } from "vuex";
+const store = useStore();
 const keywords = ref("");
-const props = defineProps({
-  showList: Object,
-});
-const emit = defineEmits(["reverseFavourite", "addShowList"]);
-
 const loading = ref(false);
-const reverseFavourite = (id) => {
-  emit("reverseFavourite", id);
-};
 const onRefresh = () => {
-  emit("addShowList");
+  store.commit("addShowList");
   setTimeout(() => {
     loading.value = false;
   }, 1000);
@@ -36,7 +30,7 @@ const onRefresh = () => {
       <div class="content">
         <item
           class="item"
-          v-for="info in showList.filter((e) => {
+          v-for="info in store.state.showList.filter((e) => {
             if (!keywords) {
               return true;
             } else {
@@ -45,7 +39,6 @@ const onRefresh = () => {
           })"
           :key="info.id"
           :info="info"
-          @reverseFavourite="reverseFavourite"
         />
       </div>
     </pull-refresh>
