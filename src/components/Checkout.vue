@@ -1,6 +1,6 @@
 <template>
   <NavBar left-arrow @click-left="onClickLeft" title="Checkout Counter" />
-  <div>123</div>
+  <div>checkout counter</div>
 </template>
 <script setup>
 import { NavBar } from "vant";
