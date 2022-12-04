@@ -7,6 +7,8 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "echarts": "^5.4.0",
+    "html2pdf.js": "^0.10.1",
     "less": "^4.1.3",
     "less-loader": "^11.1.0",
     "moment": "^2.29.4",
